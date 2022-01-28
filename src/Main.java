@@ -146,6 +146,7 @@ public class Main {
     public static void editarTodosAtributos() {
         int pos = numero("Ingrese la posicion: ");
         String nCientifico = cadena("Nombre Cientifico: ");
+        verificar(nCientifico);
         listAnimales.get(rst(pos)).setNombreCientifico(nCientifico);
         String nComun = cadena("Nombre Comun: ");
         listAnimales.get(rst(pos)).setNombreComun(nComun);
