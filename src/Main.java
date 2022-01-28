@@ -17,8 +17,29 @@ public class Main {
                 case 2:
                     editarAnimal(cadena("Ingrese el nombre cientifico: "));
                     break;
-                case 3:
+                case 3: {
+                    int opcion = numero("\nOpciones:" +
+                            "\n1. Imprimir por posicion de la lista" +
+                            "\n2. Imprimir lista completa" +
+                            "\n3. Imprimir por nombre cientifico" +
+                            "\nOPCION#");
+                    switch (opcion) {
+                        case 1:
+                            imprimirPosLista();
+                            break;
+                        case 2:
+                            imprimirListCompleta();
+                            break;
+                        case 3:
+                            imprimirXNomCientifico(cadena("Ingrese el nombre cientifico: "));
+                            break;
+                        default:
+                            System.out.println("Ingrese una opcion valida");
+                    }
+                }   break;
 
+                case 4:
+                    alimentar();
                     break;
                 case 0:
                     System.exit(0);
@@ -121,6 +142,7 @@ public class Main {
         }
     }
 
+    //Funcion para cambiar todos los atributos
     public static void editarTodosAtributos() {
         int pos = numero("Ingrese la posicion: ");
         String nCientifico = cadena("Nombre Cientifico: ");
@@ -160,6 +182,16 @@ public class Main {
                 System.out.println(animal);
         }
     }
+
+    //Funcion para alimentar
+    public static void alimentar() {
+        int pos0 = numero("Ingrese la posicion del animal a alimentar: ");
+        int pos1 = numero("Ingrese la posicion del animal a devorar:" );
+        listAnimales.get(pos0).setVida((listAnimales.get(pos0).getVida() + listAnimales.get(pos1).getVida()));
+        listAnimales.remove(pos1);
+    }
+
+
 
     //Funcion para pedir un String
     public static String cadena(String mensaje) {
