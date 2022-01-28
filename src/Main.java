@@ -114,34 +114,28 @@ public class Main {
                 "\n7. Vida" +
                 "\nOPCION# ");
 
+
         switch (opcion) {
             case 1:
-                System.out.println("Nombre Cientifico: ");
-                listAnimales.get(pos).setNombreCientifico(input.next());
+                listAnimales.get(rst(pos)).setNombreCientifico(cadena("Nombre Cientifico: "));
                 break;
             case 2:
-                System.out.println("Nombre Comun: ");
-                listAnimales.get(pos).setNombreComun(input.next());
+                listAnimales.get(rst(pos)).setNombreComun(cadena("Nombre Comun: "));
                 break;
             case 3:
-                System.out.println("Alimentacion: ");
-                listAnimales.get(pos).setAlimentacion(input.next());
+                listAnimales.get(rst(pos)).setAlimentacion(cadena("Alimentacion: "));
                 break;
             case 4:
-                System.out.println("Descripcion de Rasgos: ");
-                listAnimales.get(pos).setDescripAnimal(input.next());
+                listAnimales.get(rst(pos)).setDescripAnimal(cadena("Descripcion de Rasgos: "));
                 break;
             case 5:
-                System.out.println("Habitat: ");
-                listAnimales.get(pos).setHabitat(input.next());
+                listAnimales.get(rst(pos)).setHabitat(cadena("Habitat: "));
                 break;
             case 6:
-                System.out.println("Ubicacion Geograficas: ");
-                listAnimales.get(pos).setDisGeo(input.next());
+                listAnimales.get(rst(pos)).setDisGeo(cadena("Ubicacion Geograficas: "));
                 break;
             case 7:
-                System.out.println("Vida: ");
-                listAnimales.get(pos).setVida(input.nextInt());
+                listAnimales.get(rst(pos)).setVida(numero("Vida: "));
                 break;
         }
     }
@@ -150,27 +144,25 @@ public class Main {
     public static void editarTodosAtributos() {
         int pos = numero("Ingrese la posicion: ");
         String nCientifico = cadena("Nombre Cientifico: ");
-        listAnimales.get(pos).setNombreCientifico(nCientifico);
+        listAnimales.get(rst(pos)).setNombreCientifico(nCientifico);
         String nComun = cadena("Nombre Comun: ");
-        listAnimales.get(pos).setNombreComun(nComun);
+        listAnimales.get(rst(pos)).setNombreComun(nComun);
         String habitat = cadena("Habitat: ");
-        listAnimales.get(pos).setHabitat(habitat);
+        listAnimales.get(rst(pos)).setHabitat(habitat);
         String alimentacion = cadena("Alimentacion: ");
-        listAnimales.get(pos).setAlimentacion(alimentacion);
+        listAnimales.get(rst(pos)).setAlimentacion(alimentacion);
         String desAnimal = cadena("Descripcion Del Animal: ");
-        listAnimales.get(pos).setDescripAnimal(desAnimal);
+        listAnimales.get(rst(pos)).setDescripAnimal(desAnimal);
         String disGeo = cadena("Distribucion Geografica: ");
-        listAnimales.get(pos).setDisGeo(disGeo);
+        listAnimales.get(rst(pos)).setDisGeo(disGeo);
         int vida = numero("Años de vida: ");
-        listAnimales.get(pos).setVida(vida);
+        listAnimales.get(rst(pos)).setVida(vida);
     }
 
     //Funcion para imprimir solo el de la posicion especificada
     public static void imprimirPosLista() {
         int posicion = numero("Ingrese la posicion a imprimir: ");
-        if (posicion == 1) posicion = 0;
-        else posicion--;
-        System.out.println(listAnimales.get(posicion).toString());
+        System.out.println(listAnimales.get(rst(posicion)).toString());
     }
 
     //Funcion para imprimir toda la lista
@@ -191,12 +183,10 @@ public class Main {
     public static void alimentar() {
         int pos0 = numero("Ingrese la posicion del animal a alimentar: ");
         int pos1 = numero("Ingrese la posicion del animal a devorar: " );
-        if (pos0 == 1) pos0 = 0; else pos0--;
-        if (pos1 == 1) pos1 = 0; else pos1--;
-        listAnimales.get(pos0).setVida((listAnimales.get(pos0).getVida() + listAnimales.get(pos1).getVida()));
-        listAnimales.remove(pos1);
+        listAnimales.get(rst(pos0)).setVida((listAnimales.get(rst(pos0)).getVida() + listAnimales.get(rst(pos1)).getVida()));
+        listAnimales.remove(rst(pos1));
     }
-    
+
     //Funcion para pedir un String
     public static String cadena(String mensaje) {
         Scanner input = new Scanner(System.in);
@@ -211,5 +201,12 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.print(mensaje);
         return input.nextInt();
+    }
+
+    //Funcion para restar una posicion
+    public static int rst(int pos) {
+        if (pos == 1) pos = 0;
+        else pos--;
+        return pos;
     }
 }
