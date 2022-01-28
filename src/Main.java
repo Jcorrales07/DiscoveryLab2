@@ -7,7 +7,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        //Pruebas
+        //PRUEBAS
         registrarAnimal();
         System.out.println("Completo");
         imprimirListCompleta();

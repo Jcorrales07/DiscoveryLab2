@@ -82,15 +82,15 @@ public class Animal {
     //Metodo ToString para desplegar informacion
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Animal{");
-        sb.append("nombreCientifico ='").append(this.nombreCientifico).append('\'');
-        sb.append(", nombreComun ='").append(this.nombreComun).append('\'');
-        sb.append(", habitat ='").append(this.habitat).append('\'');
-        sb.append(", alimentacion ='").append(this.alimentacion).append('\'');
-        sb.append(", descripAnimal ='").append(this.descripAnimal).append('\'');
-        sb.append(", disGeo ='").append(this.disGeo).append('\'');
-        sb.append(", vida = ").append(this.vida);
-        sb.append("}");
+        final StringBuilder sb = new StringBuilder("Animal { ");
+        sb.append("\nNombre Cientifico ='").append(this.nombreCientifico).append('\'');
+        sb.append(", \nNombre Comun ='").append(this.nombreComun).append('\'');
+        sb.append(", \nHabitat ='").append(this.habitat).append('\'');
+        sb.append(", \nAlimentacion ='").append(this.alimentacion).append('\'');
+        sb.append(", \nDescripcion del Animal ='").append(this.descripAnimal).append('\'');
+        sb.append(", \nDistribucion Geografica ='").append(this.disGeo).append('\'');
+        sb.append(", \nVida = ").append(this.vida);
+        sb.append(" }");
         return sb.toString();
     }
 }
