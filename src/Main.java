@@ -27,7 +27,14 @@ public class Main {
         String disGeo = cadena("Distribucion Geografica: ");
         int vida = numero("Años de vida: ");
         listAnimales.add(new Animal(nCientifico, nComun, habitat, alimentacion, desAnimal, disGeo, vida));
-        listAnimales.add(new Animal("nCientifico", "nComun", "habitat", "alimentacion", "desAnimal", "disGeo", 12));
+        animalesDefault();
+    }
+
+    //Funcion que genera 3 animales por default
+    public static void animalesDefault() {
+        listAnimales.add(new Animal("Rattus", "Rata", "Bosques lluviosos", "frutos", "roedor de mediano tamaño", "Todos los paises", 2));
+        listAnimales.add(new Animal("Felis silvestris catus", "Gato", "Montaña", "carne", "Mamifero de 50 cm de largo y 20 cm altura, 4 patas, cola y suave pelaje", "Todos los paises", 5));
+        listAnimales.add(new Animal("Gallus gallus domesticus", "Gallina", "Praderas", "cereales: maiz, trigo, cebada y avena", "ave con alas cortas, pico corto y algo curvado", "sudeste asiático", 6));
     }
 
     //Funcion para editar un animal PENDIENTE
