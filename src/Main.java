@@ -4,17 +4,34 @@ import java.util.Scanner;
 public class Main {
     //Lista para guardar los animales
     public static ArrayList<Animal> listAnimales = new ArrayList<>();
-
+    public static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        //PRUEBAS
-        registrarAnimal();
-        System.out.println("Completo");
-        imprimirListCompleta();
-        System.out.println("Individual");
-        imprimirPosLista();
-        System.out.println("NCientifico");
-        imprimirXNomCientifico(cadena("Ingrese el nombre cientifico: "));
+        //Animales default
+        animalesDefault();
+        do {
+            switch (menu()) {
+                case 1:
+                    editarAnimal(cadena("Ingrese el nombre cientifico: "));
+                    break;
+
+                case 0:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Ingrese una opcion valida");
+            }
+        } while(true);
+    }
+
+    public static int menu() {
+        return numero("\n\n[=== MENU ===]" +
+                "\n1. Registrar animal" +
+                "\n2. Editar animal" +
+                "\n3. Imprimir animal" +
+                "\n4. Alimentar animal" +
+                "\n0. Salir" +
+                "\nOPCION#");
     }
 
     //Funcion para registrar un animal
@@ -27,7 +44,6 @@ public class Main {
         String disGeo = cadena("Distribucion Geografica: ");
         int vida = numero("Años de vida: ");
         listAnimales.add(new Animal(nCientifico, nComun, habitat, alimentacion, desAnimal, disGeo, vida));
-        animalesDefault();
     }
 
     //Funcion que genera 3 animales por default
@@ -37,13 +53,67 @@ public class Main {
         listAnimales.add(new Animal("Gallus gallus domesticus", "Gallina", "Praderas", "cereales: maiz, trigo, cebada y avena", "ave con alas cortas, pico corto y algo curvado", "sudeste asiático", 6));
     }
 
+
     //Funcion para editar un animal PENDIENTE
     public static void editarAnimal(String nCientifico) {
         int opcion = numero("OPCIONES: " +
                 "\n1) Editar un atributo" +
                 "\n2) Editar todos los atributos" +
                 "\nOPCION #");
+        switch (opcion) {
+            case 1:
+                editarUnAtributo(numero("Ingrese la posicion: "));
+                break;
+            case 2:
+
+        }
     }
+
+    //Funcion para editar solo un atributo
+    public static void editarUnAtributo(int pos) {
+        int opcion = numero("\nOpciones: " +
+                "\n1. Nombre Cientifico" +
+                "\n2. Nombre Comun" +
+                "\n3. Habitat" +
+                "\n4. Alimentacion" +
+                "\n5. Descripcion del animal" +
+                "\n6. Distribucion Geografica" +
+                "\n7. Vida" +
+                "\nOPCION# ");
+
+        switch (opcion) {
+            case 1:
+                System.out.println("Nombre Cientifico: ");
+                listAnimales.get(pos).setNombreCientifico(input.next());
+                break;
+            case 2:
+                System.out.println("Nombre Comun: ");
+                listAnimales.get(pos).setNombreComun(input.next());
+                break;
+            case 3:
+                System.out.println("Alimentacion: ");
+                listAnimales.get(pos).setAlimentacion(input.next());
+                break;
+            case 4:
+                System.out.println("Descripcion de Rasgos: ");
+                listAnimales.get(pos).setDescripAnimal(input.next());
+                break;
+            case 5:
+                System.out.println("Habitat: ");
+                listAnimales.get(pos).setHabitat(input.next());
+                break;
+            case 6:
+                System.out.println("Ubicacion Geograficas: ");
+                listAnimales.get(pos).setDisGeo(input.next());
+                break;
+            case 7:
+                System.out.println("Vida: ");
+                listAnimales.get(pos).setVida(input.nextInt());
+                break;
+        }
+    }
+
+
 
     //Funcion para imprimir solo el de la posicion especificada
     public static void imprimirPosLista() {
@@ -62,7 +132,7 @@ public class Main {
     //Funcion para imprimir por nombre cientifico
     public static void imprimirXNomCientifico(String nCientifico) {
         for (Animal animal : listAnimales) {
-            if (nCientifico.equals(animal.getNombreCientifico()))
+            if (nCientifico.equalsIgnoreCase(animal.getNombreCientifico()))
                 System.out.println(animal);
         }
     }
