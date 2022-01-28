@@ -12,9 +12,14 @@ public class Main {
         do {
             switch (menu()) {
                 case 1:
+                    registrarAnimal();
+                    break;
+                case 2:
                     editarAnimal(cadena("Ingrese el nombre cientifico: "));
                     break;
+                case 3:
 
+                    break;
                 case 0:
                     System.exit(0);
                     break;
@@ -65,7 +70,10 @@ public class Main {
                 editarUnAtributo(numero("Ingrese la posicion: "));
                 break;
             case 2:
-
+                editarTodosAtributos();
+                break;
+            default:
+                System.out.println("Ingrese una opcion valida");
         }
     }
 
@@ -113,7 +121,23 @@ public class Main {
         }
     }
 
-
+    public static void editarTodosAtributos() {
+        int pos = numero("Ingrese la posicion: ");
+        String nCientifico = cadena("Nombre Cientifico: ");
+        listAnimales.get(pos).setNombreCientifico(nCientifico);
+        String nComun = cadena("Nombre Comun: ");
+        listAnimales.get(pos).setNombreComun(nComun);
+        String habitat = cadena("Habitat: ");
+        listAnimales.get(pos).setHabitat(habitat);
+        String alimentacion = cadena("Alimentacion: ");
+        listAnimales.get(pos).setAlimentacion(alimentacion);
+        String desAnimal = cadena("Descripcion Del Animal: ");
+        listAnimales.get(pos).setDescripAnimal(desAnimal);
+        String disGeo = cadena("Distribucion Geografica: ");
+        listAnimales.get(pos).setDisGeo(disGeo);
+        int vida = numero("Años de vida: ");
+        listAnimales.get(pos).setVida(vida);
+    }
 
     //Funcion para imprimir solo el de la posicion especificada
     public static void imprimirPosLista() {
