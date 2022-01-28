@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Main {
     //Lista para guardar los animales
     public static ArrayList<Animal> listAnimales = new ArrayList<>();
-    public static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         //Animales default
@@ -63,6 +62,7 @@ public class Main {
     //Funcion para registrar un animal
     public static void registrarAnimal() {
         String nCientifico = cadena("Nombre Cientifico: ");
+        verificar(nCientifico);
         String nComun = cadena("Nombre Comun: ");
         String habitat = cadena("Habitat: ");
         String alimentacion = cadena("Alimentacion: ");
@@ -73,7 +73,7 @@ public class Main {
             System.out.println("No se acepta la 0 de vida, vuelva a registrar");
             vida = numero("Años de vida: ");
         }
-            listAnimales.add(new Animal(nCientifico, nComun, habitat, alimentacion, desAnimal, disGeo, vida));
+        listAnimales.add(new Animal(nCientifico, nComun, habitat, alimentacion, desAnimal, disGeo, vida));
     }
 
     //Funcion que genera 3 animales por default
@@ -117,7 +117,9 @@ public class Main {
 
         switch (opcion) {
             case 1:
-                listAnimales.get(rst(pos)).setNombreCientifico(cadena("Nombre Cientifico: "));
+                String nCientifico = cadena("Nombre Cientifico: ");
+                verificar(nCientifico);
+                listAnimales.get(rst(pos)).setNombreCientifico(nCientifico);
                 break;
             case 2:
                 listAnimales.get(rst(pos)).setNombreComun(cadena("Nombre Comun: "));
@@ -209,4 +211,14 @@ public class Main {
         else pos--;
         return pos;
     }
+
+    public static void verificar(String nCientifico) {
+        for (Animal listAnimale : listAnimales) {
+            if (nCientifico.equalsIgnoreCase(listAnimale.getNombreCientifico())) {
+                System.out.println("Ya existe uno!");
+                menu();
+            }
+        }
+    }
+
 }
