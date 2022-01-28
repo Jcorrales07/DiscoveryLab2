@@ -89,7 +89,7 @@ public class Animal {
         sb.append(", alimentacion ='").append(this.alimentacion).append('\'');
         sb.append(", descripAnimal ='").append(this.descripAnimal).append('\'');
         sb.append(", disGeo ='").append(this.disGeo).append('\'');
-        sb.append(", vida =").append(this.vida);
+        sb.append(", vida = ").append(this.vida);
         sb.append("}");
         return sb.toString();
     }
