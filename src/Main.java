@@ -69,7 +69,11 @@ public class Main {
         String desAnimal = cadena("Descripcion Del Animal: ");
         String disGeo = cadena("Distribucion Geografica: ");
         int vida = numero("Años de vida: ");
-        listAnimales.add(new Animal(nCientifico, nComun, habitat, alimentacion, desAnimal, disGeo, vida));
+        while(vida == 0) {
+            System.out.println("No se acepta la 0 de vida, vuelva a registrar");
+            vida = numero("Años de vida: ");
+        }
+            listAnimales.add(new Animal(nCientifico, nComun, habitat, alimentacion, desAnimal, disGeo, vida));
     }
 
     //Funcion que genera 3 animales por default
@@ -172,7 +176,7 @@ public class Main {
     //Funcion para imprimir toda la lista
     public static void imprimirListCompleta() {
         for (int i = 0; i < listAnimales.size(); i++)
-            System.out.println((i+1)+ ". "+listAnimales.get(i).toString());
+            System.out.println("\n"+(i+1)+ ". "+listAnimales.get(i).toString());
     }
 
     //Funcion para imprimir por nombre cientifico
@@ -186,13 +190,13 @@ public class Main {
     //Funcion para alimentar
     public static void alimentar() {
         int pos0 = numero("Ingrese la posicion del animal a alimentar: ");
-        int pos1 = numero("Ingrese la posicion del animal a devorar:" );
+        int pos1 = numero("Ingrese la posicion del animal a devorar: " );
+        if (pos0 == 1) pos0 = 0; else pos0--;
+        if (pos1 == 1) pos1 = 0; else pos1--;
         listAnimales.get(pos0).setVida((listAnimales.get(pos0).getVida() + listAnimales.get(pos1).getVida()));
         listAnimales.remove(pos1);
     }
-
-
-
+    
     //Funcion para pedir un String
     public static String cadena(String mensaje) {
         Scanner input = new Scanner(System.in);

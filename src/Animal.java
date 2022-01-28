@@ -90,7 +90,7 @@ public class Animal {
         sb.append(", \nDescripcion del Animal ='").append(this.descripAnimal).append('\'');
         sb.append(", \nDistribucion Geografica ='").append(this.disGeo).append('\'');
         sb.append(", \nVida = ").append(this.vida);
-        sb.append(" }");
+        sb.append(" \n}");
         return sb.toString();
     }
 }
